@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/RelativeLayout"
+
+    >
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/Exercise_Image"
+        android:src="@mipmap/ic_launcher"
+
+        ></de.hdodenhof.circleimageview.CircleImageView>
+
+    <TextView
+        android:id="@+id/Exercise_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Running"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:layout_centerVertical="true"
+
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@+id/Exercise_Image"
+
+        />
+
+
+</RelativeLayout>

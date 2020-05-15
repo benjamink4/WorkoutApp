@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/Profile"
+        android:title="Go to Profile"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/Data"
+        android:title="View Workout Data"
+        app:showAsAction="never"
+        >
+
+    </item>
+
+</menu>
+
+
+
+
+
