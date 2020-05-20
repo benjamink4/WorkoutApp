@@ -87,8 +87,9 @@ public class MainActivity extends AppCompatActivity implements ExercisesRecycler
 
     @Override
     public void onClick(int position) {
-        mExerciseNames.get(position); //reference to object
+
         Intent intent = new Intent(this,ViewAndAdd.class);
+        intent.putExtra("WORKOUT_NAME",mExerciseNames.get(position));
         startActivity(intent);
 
 
