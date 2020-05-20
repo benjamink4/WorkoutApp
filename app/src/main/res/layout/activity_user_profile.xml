@@ -50,6 +50,7 @@
             android:id="@+id/Weight"
             android:layout_width="1000sp"
             android:layout_height="50sp"
+            android:inputType="number"
             android:layout_toRightOf="@+id/Name_Label"
             android:hint="Enter Weight"
             ></EditText>
@@ -66,6 +67,7 @@
             android:layout_width="100sp"
             android:layout_height="50sp"
             android:id="@+id/Height_Label"
+
             android:layout_gravity="left"
             android:text="Height">
 
@@ -74,6 +76,7 @@
             android:id="@+id/Feet"
             android:layout_width="125sp"
             android:layout_height="50sp"
+            android:inputType="number"
             android:layout_toRightOf="@+id/Height_Label"
             android:hint="Enter Feet"
             ></EditText>
@@ -83,6 +86,7 @@
             android:paddingLeft="12dp"
             android:layout_width="500sp"
             android:layout_height="50sp"
+            android:inputType="number"
             android:layout_toRightOf="@+id/Inches_Label"
             android:hint="Enter Inches"
             ></EditText>

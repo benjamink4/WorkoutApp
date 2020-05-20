@@ -1,5 +1,6 @@
 package com.example.android.workoutapp;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,11 +12,22 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class UserProfile extends AppCompatActivity {
-    EditText ETname;
-    EditText ETweight;
-    EditText ETfeet;
-    EditText ETinches;
-    RadioGroup RGender;
+    private EditText ETname;
+    private EditText ETweight;
+    private EditText ETfeet;
+    private EditText ETinches;
+    private RadioGroup RGender;
+    private RadioButton male;
+    private RadioButton female;
+
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String WEIGHT ="WEIGHT";
+    public static final String NAME ="NAME";
+    public static final String FEET ="FEET";
+    public static final String INCHES ="INCHES";
+    public static final String MALE= "MALE";
+    public static final String FEMALE= "FEMALE";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,39 +37,74 @@ public class UserProfile extends AppCompatActivity {
 
         ETname=(EditText)findViewById(R.id.Name);
         ETweight = (EditText)findViewById(R.id.Weight);
+        ETinches = (EditText)findViewById(R.id.Inches);
         ETfeet = (EditText)findViewById(R.id.Feet);
-        RGender = (RadioGroup) findViewById(R.id.SexRadioButtons);
-
-
+        RGender = (RadioGroup)findViewById(R.id.SexRadioButtons);
+        male = (RadioButton)findViewById(R.id.Male);
+        female = (RadioButton )findViewById(R.id.Female);
 
         Button confirm = (Button)findViewById(R.id.Confirm);
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v){
+
+                if(ETname.getText().toString().length()==0
+                        ||ETweight.getText().toString().length()==0
+                        || ETinches.getText().toString().length()==0
+                        || ETfeet.getText().toString().length()==0
+                        || ETname.getText().toString().length()==0
+                         || RGender.getCheckedRadioButtonId()==-1){
+                    Toast.makeText(getApplicationContext(),"Please fill out required information",Toast.LENGTH_SHORT).show();
+                }else{
+                    //sTORE THE DATA VALUES INTO A SHARED PREFENCE
+                    saveData();
+
+                }
+
 
 
             }
         });
+        loadData();
 
 
     }
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
+    public void saveData(){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(NAME,ETname.getText().toString());
+        editor.putString(WEIGHT, ETweight.getText().toString());
 
-        // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.Male:
-                if (checked)
-                    Toast.makeText(this, "Male Clicked", Toast.LENGTH_SHORT).show();
-                    break;
-            case R.id.Female:
-                if (checked)
-                    // Ninjas rule
-                    Toast.makeText(this,"Female",Toast.LENGTH_SHORT).show();
-                    break;
-        }
+        editor.putString(FEET, ETfeet.getText().toString());
+        editor.putString(INCHES, ETinches.getText().toString());
+
+
+        editor.putBoolean(MALE,male.isChecked());
+        editor.putBoolean(FEMALE,female.isChecked());
+
+        editor.apply();
+
+
+    }
+    public void loadData(){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        String n = sharedPreferences.getString(NAME," ");
+        ETname.setText(n);
+
+        //String w = sharedPreferences.getString(WEIGHT,"");
+        ETweight.setText(sharedPreferences.getString(WEIGHT,""));
+
+        ETfeet.setText(sharedPreferences.getString(FEET,""));
+        ETinches.setText(sharedPreferences.getString(INCHES,""));
+
+        male.setChecked(sharedPreferences.getBoolean(MALE,false));
+        female.setChecked(sharedPreferences.getBoolean(FEMALE,false));
+
+
+
+    }
     }
 
 
-}
+
+

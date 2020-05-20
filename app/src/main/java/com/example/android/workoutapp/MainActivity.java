@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ExercisesRecyclerView.OnItemListerner {
 
     //Variables
     private ArrayList<String>mExerciseNames=new ArrayList<>();
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initRecyclerView(){
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.RecylclerView);
-        ExercisesRecyclerView adapter =  new ExercisesRecyclerView(this,mExerciseNames,mImageUrls);
+        ExercisesRecyclerView adapter =  new ExercisesRecyclerView(this,mExerciseNames,mImageUrls,this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -85,4 +85,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onClick(int position) {
+        mExerciseNames.get(position); //reference to object
+        Intent intent = new Intent(this,ViewAndAdd.class);
+        startActivity(intent);
+
+
+
+    }
 }
