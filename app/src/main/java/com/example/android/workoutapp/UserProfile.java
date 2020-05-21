@@ -70,7 +70,7 @@ public class UserProfile extends AppCompatActivity {
 
     }
     public void saveData(){
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(NAME,ETname.getText().toString());
         editor.putString(WEIGHT, ETweight.getText().toString());

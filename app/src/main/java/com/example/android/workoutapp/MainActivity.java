@@ -91,8 +91,5 @@ public class MainActivity extends AppCompatActivity implements ExercisesRecycler
         Intent intent = new Intent(this,ViewAndAdd.class);
         intent.putExtra("WORKOUT_NAME",mExerciseNames.get(position));
         startActivity(intent);
-
-
-
     }
 }
