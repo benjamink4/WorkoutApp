@@ -50,8 +50,14 @@ public class addTab extends Fragment  {
         workoutName.setText(intent.getExtras().getString("WORKOUT_NAME"));
         caloriesBurned = (TextView)view.findViewById(R.id.CaloriesBurned);
         hours = (EditText)view.findViewById(R.id.Hours);
+        int h;
+        if(hours.getText().toString().length()==0){
+            h=0;
+        }
+
         minutes =(EditText)view.findViewById(R.id.Minutes);
         button = (Button)view.findViewById(R.id.CaloriesCalculator);
+
 
 
 

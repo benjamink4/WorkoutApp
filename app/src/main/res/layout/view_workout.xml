@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:text="Date:"
+        android:layout_width="120sp"
+        android:layout_height="50sp"
+        android:id="@+id/Date">
+    </TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:id="@+id/View_Workout_Name_Row"
+        >
+        <TextView
+            android:layout_width="100sp"
+            android:layout_height="50sp"
+            android:text="Workout"
+            android:id="@+id/Workout_Label"
+            ></TextView>
+        <TextView
+            android:layout_width="1000sp"
+            android:layout_height="50sp"
+            android:paddingRight="10dp"
+            android:id="@+id/Workout_Name"
+            ></TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/Time_Row"
+        >
+        <TextView
+            android:layout_width="100sp"
+            android:layout_height="50sp"
+            android:id="@+id/View_Time_Label"
+            android:text="Time"
+            ></TextView>
+        <TextView
+            android:layout_width="100sp"
+            android:layout_height="50sp"
+            android:id="@+id/View_Time"
+            ></TextView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calories Burned: "
+            android:id="@+id/ViewCaloriesBurnedLabel"
+            ></TextView>
+        <TextView
+            android:layout_width="100sp"
+            android:layout_toRightOf="@+id/CaloriesBurnedLabel"
+            android:id="@+id/ViewCaloriesBurned"
+            android:layout_height="50sp"
+            android:paddingLeft="10dp"
+
+            ></TextView>
+    </LinearLayout>
+</LinearLayout>
