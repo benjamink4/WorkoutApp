@@ -20,7 +20,7 @@ public interface WorkoutDAO {
     void insert(Workout workout);
 
     @Delete
-    void Delte(Workout...workout);
+    void Delete(Workout workout);
 
     @Update
     void update(Workout...workouts);
