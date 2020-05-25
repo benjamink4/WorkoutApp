@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey;
 public class Workout {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    protected int id;
 
 
     @ColumnInfo (name="WORKOUT_NAME")
@@ -65,6 +65,7 @@ public class Workout {
     public void setHours(int hours) {
         this.hours = hours;
     }
+    private int getId(){return id;}
 
     public int getMinutes() {
         return minutes;
