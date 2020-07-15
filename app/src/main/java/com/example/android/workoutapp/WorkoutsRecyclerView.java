@@ -53,7 +53,7 @@ public class WorkoutsRecyclerView extends RecyclerView.Adapter<WorkoutsRecyclerV
         holder.name.setText(workoutArrayList.get(position).getWorkout_Name());
         holder.date.setText(workoutArrayList.get(position).getDate());
         holder.calories.setText(String.valueOf(workoutArrayList.get(position).getCalories()));
-        holder.time.setText(String.valueOf(workoutArrayList.get(position).getHours())+"h"+String.valueOf(workoutArrayList.get(position).getMinutes())+"m");
+        holder.time.setText(String.valueOf(workoutArrayList.get(position).getHours())+"h "+String.valueOf(workoutArrayList.get(position).getMinutes())+"m");
 
 
     }

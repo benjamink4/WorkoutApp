@@ -7,6 +7,8 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 @Database(entities = {Workout.class},version = 1)
+
+//Source: https://medium.com/mindorks/using-room-database-android-jetpack-675a89a0e942
 public abstract class WorkoutDatabase extends RoomDatabase{
     private static final String DB_NAME = "WORKOUT_DB";
     private static WorkoutDatabase instance;

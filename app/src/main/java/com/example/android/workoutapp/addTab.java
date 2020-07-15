@@ -14,7 +14,9 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 /**
@@ -87,7 +89,25 @@ public class addTab extends Fragment {
         DatabaseSaver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //save the values before adding to the database???
+                int h = 0;
+                if (hours.getText().toString().length() == 0) {
+                    h = 0;
+                } else {
+                    h = Integer.parseInt(hours.getText().toString());
+                }
+                int m = 0;
+                if (minutes.getText().toString().length() == 0) {
+                    m = 0;
+                } else {
+                    m = Integer.parseInt(minutes.getText().toString());
+                }
+                String  pattern = "yyyy-MM-dd";
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+                String date = simpleDateFormat.format(new Date());
+
+                Workout n=new Workout(workoutName.getText().toString(),date,Double.parseDouble(caloriesBurned.getText().toString()),h,m);
+
+
 
             }
         });
@@ -137,7 +157,7 @@ public class addTab extends Fragment {
         }
     }
 
-    private class SaveWorkout extends AsyncTask<Void, Void, Void> {
+    private  class SaveWorkout extends AsyncTask<Void, Void, Void> {
         Workout workout;
 
         @Override
@@ -146,6 +166,7 @@ public class addTab extends Fragment {
             return null;
         }
     }
+
 }
 
 

@@ -14,7 +14,7 @@ public interface WorkoutDAO {
     List<Workout>getAll();
 
     @Query("SELECT * FROM workout_table WHERE WORKOUT_NAME LIKE :Workout_Name")
-    Workout findWorkout(String Workout_Name);
+    Workout findWorkout(String Workout_Name); //find a particuluar workout
 
     @Insert
     void insert(Workout workout);
