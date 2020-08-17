@@ -72,6 +72,12 @@ public class MainActivity extends AppCompatActivity implements ExercisesRecycler
             case R.id.Profile:
                 Intent p=new Intent(this,UserProfile.class);
                 startActivity(p);
+            case R.id.Data:
+                Intent b = new Intent(this,ViewAll.class);
+                startActivity(b);
+
+
+
         }
         return super.onOptionsItemSelected(item);
     }

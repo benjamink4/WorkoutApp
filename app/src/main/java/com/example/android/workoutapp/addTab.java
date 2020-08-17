@@ -2,8 +2,8 @@ package com.example.android.workoutapp;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +32,7 @@ public class addTab extends Fragment {
     private Button button;
     private Button DatabaseSaver;
     private ArrayList<Workout> workouts = new ArrayList<>();
+    public static final String EXTRA_REPLY = "com.example.android.workoutlistsql.REPLY";
 
 
     public addTab() {
@@ -87,8 +88,10 @@ public class addTab extends Fragment {
         });
 
         DatabaseSaver.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+                Intent replyIntent = new Intent();
                 int h = 0;
                 if (hours.getText().toString().length() == 0) {
                     h = 0;
@@ -106,6 +109,10 @@ public class addTab extends Fragment {
                 String date = simpleDateFormat.format(new Date());
 
                 Workout n=new Workout(workoutName.getText().toString(),date,Double.parseDouble(caloriesBurned.getText().toString()),h,m);
+                replyIntent.putExtra("WORKOUT", (Parcelable) n);
+                getActivit
+
+
 
 
 
@@ -157,15 +164,7 @@ public class addTab extends Fragment {
         }
     }
 
-    private  class SaveWorkout extends AsyncTask<Void, Void, Void> {
-        Workout workout;
 
-        @Override
-        protected Void doInBackground(Void... voids) {
-            WorkoutDatabase.getInstance(getContext()).workoutDAO().insert(workout);
-            return null;
-        }
-    }
 
 }
 

@@ -10,16 +10,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class WorkoutsRecyclerView extends RecyclerView.Adapter<WorkoutsRecyclerView.WorkoutViewHolder> {
 
 
     private Context context;
-    private ArrayList<Workout> workoutArrayList;
-    public WorkoutsRecyclerView(Context context, ArrayList<Workout>workoutArrayList){
+    private List<Workout> workouts;
+    public WorkoutsRecyclerView(Context context){
         this.context=context;
-        this.workoutArrayList=workoutArrayList;
+
     }
 
 
@@ -49,18 +49,24 @@ public class WorkoutsRecyclerView extends RecyclerView.Adapter<WorkoutsRecyclerV
 
     @Override
     public void onBindViewHolder(@NonNull WorkoutViewHolder holder, int position) {
-        final Workout workout = workoutArrayList.get(position);
-        holder.name.setText(workoutArrayList.get(position).getWorkout_Name());
-        holder.date.setText(workoutArrayList.get(position).getDate());
-        holder.calories.setText(String.valueOf(workoutArrayList.get(position).getCalories()));
-        holder.time.setText(String.valueOf(workoutArrayList.get(position).getHours())+"h "+String.valueOf(workoutArrayList.get(position).getMinutes())+"m");
+        final Workout workout = workouts.get(position);
+        holder.name.setText(workouts.get(position).getWorkout_Name());
+        holder.date.setText(workouts.get(position).getDate());
+        holder.calories.setText(String.valueOf(workouts.get(position).getCalories()));
+        holder.time.setText(String.valueOf(workouts.get(position).getHours())+"h "+String.valueOf(workouts.get(position).getMinutes())+"m");
 
 
     }
 
     @Override
     public int getItemCount() {
-        return workoutArrayList.size();
+        return workouts.size();
+    }
+
+    void setWorkoutArrayList(List<Workout>workouts){
+        this.workouts = workouts;
+        notifyDataSetChanged();
+
     }
 
 
