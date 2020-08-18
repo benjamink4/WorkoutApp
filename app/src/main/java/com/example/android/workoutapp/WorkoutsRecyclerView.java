@@ -49,18 +49,28 @@ public class WorkoutsRecyclerView extends RecyclerView.Adapter<WorkoutsRecyclerV
 
     @Override
     public void onBindViewHolder(@NonNull WorkoutViewHolder holder, int position) {
-        final Workout workout = workouts.get(position);
-        holder.name.setText(workouts.get(position).getWorkout_Name());
-        holder.date.setText(workouts.get(position).getDate());
-        holder.calories.setText(String.valueOf(workouts.get(position).getCalories()));
-        holder.time.setText(String.valueOf(workouts.get(position).getHours())+"h "+String.valueOf(workouts.get(position).getMinutes())+"m");
+        if(workouts!=null) {
+            final Workout workout = workouts.get(position);
+            holder.name.setText(workouts.get(position).getWorkout_Name());
+            holder.date.setText(workouts.get(position).getDate());
+            holder.calories.setText(String.valueOf(workouts.get(position).getCalories()));
+            holder.time.setText(String.valueOf(workouts.get(position).getHours()) + "h " + String.valueOf(workouts.get(position).getMinutes()) + "m");
+        }
+        else{
+            holder.name.setText("Nope");
+            holder.date.setText("Nope");
+            holder.calories.setText("Nope");
+            holder.time.setText("Nope");
+
+        }
 
 
     }
 
     @Override
     public int getItemCount() {
-        return workouts.size();
+        if(workouts!=null)return workouts.size();
+        return 0;
     }
 
     void setWorkoutArrayList(List<Workout>workouts){

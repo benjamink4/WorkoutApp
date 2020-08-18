@@ -1,5 +1,6 @@
 package com.example.android.workoutapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ public class addTab extends Fragment {
     private Button button;
     private Button DatabaseSaver;
     private ArrayList<Workout> workouts = new ArrayList<>();
+
     public static final String EXTRA_REPLY = "com.example.android.workoutlistsql.REPLY";
 
 
@@ -108,9 +110,11 @@ public class addTab extends Fragment {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
                 String date = simpleDateFormat.format(new Date());
 
-                Workout n=new Workout(workoutName.getText().toString(),date,Double.parseDouble(caloriesBurned.getText().toString()),h,m);
-                replyIntent.putExtra("WORKOUT", (Parcelable) n);
-                getActivit
+                Workout n=new Workout(workoutName.getText().toString(),date,Double.parseDouble(caloriesBurned.getText().toString()),m,h);
+                replyIntent.putExtra(EXTRA_REPLY, (Parcelable) n);
+
+                getActivity().setResult(Activity.RESULT_OK,replyIntent);
+                getActivity().finish();
 
 
 

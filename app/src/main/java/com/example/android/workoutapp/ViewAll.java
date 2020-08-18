@@ -1,5 +1,6 @@
 package com.example.android.workoutapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +13,8 @@ import java.util.List;
 
 public class ViewAll extends AppCompatActivity {
     private WorkoutModel workoutModel;
-    public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
+    public static final int NEW_WORKOUT_ACTIVITY_REQUEST_CODE = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,7 @@ public class ViewAll extends AppCompatActivity {
         final WorkoutsRecyclerView adapter = new WorkoutsRecyclerView(this.getApplicationContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         workoutModel = new ViewModelProvider(this).get(WorkoutModel.class);
         workoutModel.getAllWorkouts().observe(this, new Observer<List<Workout>>() {
             @Override
@@ -34,5 +37,18 @@ public class ViewAll extends AppCompatActivity {
         });
 
 
+
+
     }
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == NEW_WORKOUT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            Workout workout = data.getParcelableExtra(ViewAndAdd.EXTRA_REPLY);
+            workoutModel.insert(workout);
+        } else {
+
+        }
+    }
+
 }

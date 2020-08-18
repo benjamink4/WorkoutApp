@@ -17,4 +17,7 @@ public class WorkoutModel extends AndroidViewModel {
         allWorkouts = workoutRepository.getAllWords();
     }
     LiveData<List<Workout>> getAllWorkouts(){return allWorkouts;}
+    void insert(Workout n){
+        workoutRepository.insert(n);
+    }
 }
