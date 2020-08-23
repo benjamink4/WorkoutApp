@@ -39,7 +39,7 @@ public class Workout {
     }
 
     public void setWorkout_Name(String workout_Name) {
-        Workout_Name = workout_Name;
+        this.Workout_Name = workout_Name;
     }
 
     public String getDate() {

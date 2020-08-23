@@ -2,7 +2,6 @@ package com.example.android.workoutapp;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -20,8 +19,8 @@ public interface WorkoutDAO {
     @Insert
     void insert(Workout workout);
 
-    @Delete
-    void Delete(Workout workout);
+    @Query("DELETE FROM workout_table")
+    void deleteAll();
 
     @Update
     void update(Workout...workouts);

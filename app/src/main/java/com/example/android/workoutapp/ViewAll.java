@@ -2,6 +2,7 @@ package com.example.android.workoutapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -44,10 +45,11 @@ public class ViewAll extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == NEW_WORKOUT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Workout workout = data.getParcelableExtra(ViewAndAdd.EXTRA_REPLY);
+            Workout workout = new Workout(data.getStringExtra("WORKOUT"),data.getStringExtra("DATE"),data.getDoubleExtra("CALORIES",0),data.getIntExtra("HOURS",0),data.getIntExtra("MINUTES",0));
             workoutModel.insert(workout);
+            Toast.makeText(getApplicationContext(),"SAVED",Toast.LENGTH_SHORT).show();
         } else {
-
+            Toast.makeText(getApplicationContext(),"NOT SAVED",Toast.LENGTH_LONG).show();
         }
     }
 

@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity implements ExercisesRecycler
 
     //Variables
     private ArrayList<String>mExerciseNames=new ArrayList<>();
+    //public static final int NEW_WORKOUT_ACTIVITY_REQUEST_CODE = 1;
+
     private ArrayList<String>mImageUrls=new ArrayList<>();
 
     private void initImageBitmaps() {
@@ -73,8 +75,9 @@ public class MainActivity extends AppCompatActivity implements ExercisesRecycler
                 Intent p=new Intent(this,UserProfile.class);
                 startActivity(p);
             case R.id.Data:
-                Intent b = new Intent(this,ViewAll.class);
+                Intent b = new Intent(MainActivity.this,ViewAll.class);
                 startActivity(b);
+
 
 
 
@@ -96,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements ExercisesRecycler
 
         Intent intent = new Intent(this,ViewAndAdd.class);
         intent.putExtra("WORKOUT_NAME",mExerciseNames.get(position));
-        startActivity(intent);
+        startActivityForResult(intent,ViewAll.NEW_WORKOUT_ACTIVITY_REQUEST_CODE);
+
     }
 }

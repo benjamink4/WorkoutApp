@@ -33,22 +33,7 @@ public class viewTab extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         Intent intent = getActivity().getIntent();
-
         String workout_name =intent.getExtras().getString("WORKOUT_NAME");
-
-
-
-
-        // Inflate the layout for this fragment
-        //Sample data, delete when we can delete this view
-        //workouts.add(new Workout(  (intent.getExtras().getString("WORKOUT_NAME").toString()),"4/20/1969",342.3, 1, 2));
-        workouts.add(new Workout(workout_name.toString(),"4/20/1969",342.3, 1, 2));
-        workouts.add(new Workout("Running","4/20/1969",342.3, 1, 2));
-        workouts.add(new Workout("Running","4/20/1969",342.3, 1, 2));
-        workouts.add(new Workout("Running","4/20/1969",342.3, 1, 2));
-
-
-
 
         return view;
     }

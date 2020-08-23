@@ -1,10 +1,8 @@
 package com.example.android.workoutapp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,38 +87,39 @@ public class addTab extends Fragment {
             }
         });
 
-        DatabaseSaver.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent replyIntent = new Intent();
-                int h = 0;
-                if (hours.getText().toString().length() == 0) {
-                    h = 0;
-                } else {
-                    h = Integer.parseInt(hours.getText().toString());
-                }
-                int m = 0;
-                if (minutes.getText().toString().length() == 0) {
-                    m = 0;
-                } else {
-                    m = Integer.parseInt(minutes.getText().toString());
-                }
-                String  pattern = "yyyy-MM-dd";
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-                String date = simpleDateFormat.format(new Date());
-
-                Workout n=new Workout(workoutName.getText().toString(),date,Double.parseDouble(caloriesBurned.getText().toString()),m,h);
-                replyIntent.putExtra(EXTRA_REPLY, (Parcelable) n);
-
-                getActivity().setResult(Activity.RESULT_OK,replyIntent);
-                getActivity().finish();
-
-
-
-
-
+        DatabaseSaver.setOnClickListener(v -> {
+            Intent replyIntent = new Intent();
+            int h = 0;
+            if (hours.getText().toString().length() == 0) {
+                h = 0;
+            } else {
+                h = Integer.parseInt(hours.getText().toString());
             }
+            int m = 0;
+            if (minutes.getText().toString().length() == 0) {
+                m = 0;
+            } else {
+                m = Integer.parseInt(minutes.getText().toString());
+            }
+            String  pattern = "yyyy-MM-dd";
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+            String date = simpleDateFormat.format(new Date());
+
+            Workout n=new Workout(workoutName.getText().toString(),date,Double.parseDouble(caloriesBurned.getText().toString()),m,h);
+            replyIntent.putExtra("WORKOUTNAME", workoutName.getText().toString());
+            replyIntent.putExtra("DATE", date);
+            replyIntent.putExtra("CALORIES",Double.parseDouble(caloriesBurned.getText().toString()));
+            replyIntent.putExtra("MINUTES",m);
+            replyIntent.putExtra("HOURS",h);
+
+            //Toast.makeText(getActivity().getApplicationContext(),"SAVED",Toast.LENGTH_SHORT).show();
+            getActivity().setResult(getActivity().RESULT_OK,replyIntent);
+            getActivity().finish();
+
+
+
+
+
         });
 
 
